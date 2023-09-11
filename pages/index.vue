@@ -4,10 +4,6 @@
 	};
 
 	const mapUrl = `https://www.google.com/maps/embed?${coordinates.treviFountain}`;
-
-	function throwCoins() {
-		console.log('Throw Coins');
-	}
 </script>
 
 <template>
@@ -16,10 +12,17 @@
 			<iframe
 				class="map"
 				:src="mapUrl"
-				allowfullscreen=""
 				loading="lazy"
 				referrerpolicy="no-referrer-when-downgrade"
 			></iframe>
+
+			<Transition @after-leave="threwCoins">
+				<img
+					v-if="!isThrow"
+					src="/matic.png"
+					class="coin"
+				>
+			</Transition>
 		</div>
 
 		<div class="ui">
@@ -31,23 +34,62 @@
 	</main>
 </template>
 
+<script>
+export default {
+	data() {
+		return {
+			isThrow: false
+		};
+	},
+	methods: {
+		throwCoins() {
+			this.isThrow = true;
+		},
+		threwCoins() {
+			this.isThrow = false;
+		}
+	}
+};
+</script>
+
 <style lang="scss" scoped>
 main {
+	$ui-top: 70%;
+
 	display: flex;
 	justify-content: center;
 	.screen {
 		width: 100vw;
 		height: 100vh;
+		position: relative;
 		.map {
 			width: 100%;
 			height: 100%;
+		}
+
+		.coin {
+			position: absolute;
+			top: $ui-top;
+			left: 50%;
+			transform: translate3d(-50%, 0, 0);
+			width: 5vw;
+			height: 5vw;
+			opacity: 0;
+
+			&.v-enter-active, &.v-leave-active {
+				transition: top 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+			}
+			&.v-enter, &.v-leave-to {
+				top: 45%;
+				opacity: 1;
+			}
 		}
 	}
 
 	.ui {
 		position: absolute;
 		left: 50%;
-		top: 70%;
+		top: $ui-top;
 		transform: translateX(-50%);
 		.throw  {
 			width: 20vw;
