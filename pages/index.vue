@@ -18,7 +18,7 @@
 
 			<Transition @after-leave="threwCoins">
 				<img
-					v-if="!isThrow"
+					v-if="!isCoinTossed"
 					src="/matic.png"
 					class="coin"
 				>
@@ -27,9 +27,9 @@
 
 		<div class="ui">
 			<button
-				class="throw"
-				@click="throwCoins"
-			>&gt;&gt; Throw coins &lt;&lt;</button>
+				class="toss"
+				@click="tossCoin"
+			>&gt;&gt; Toss coins &lt;&lt;</button>
 		</div>
 	</main>
 </template>
@@ -38,15 +38,15 @@
 export default {
 	data() {
 		return {
-			isThrow: false
+			isCoinTossed: false
 		};
 	},
 	methods: {
-		throwCoins() {
-			this.isThrow = true;
+		tossCoin() {
+			this.isCoinTossed = true;
 		},
 		threwCoins() {
-			this.isThrow = false;
+			this.isCoinTossed = false;
 		}
 	}
 };
@@ -91,7 +91,7 @@ main {
 		left: 50%;
 		top: $ui-top;
 		transform: translateX(-50%);
-		.throw  {
+		button.toss  {
 			width: 20vw;
 			height: 10vw;
 			background-color: #eb6100;
