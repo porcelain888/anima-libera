@@ -16,7 +16,7 @@
 				referrerpolicy="no-referrer-when-downgrade"
 			></iframe>
 
-			<Transition @after-leave="threwCoins">
+			<Transition @after-leave="tossedCoin">
 				<img
 					v-if="!isCoinTossed"
 					src="/matic.png"
@@ -29,7 +29,7 @@
 			<button
 				class="toss"
 				@click="tossCoin"
-			>&gt;&gt; Toss coins &lt;&lt;</button>
+			>&gt;&gt; Toss coin &lt;&lt;</button>
 		</div>
 	</main>
 </template>
@@ -45,7 +45,7 @@ export default {
 		tossCoin() {
 			this.isCoinTossed = true;
 		},
-		threwCoins() {
+		tossedCoin() {
 			this.isCoinTossed = false;
 		}
 	}
