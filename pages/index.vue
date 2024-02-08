@@ -109,6 +109,19 @@ main {
 				background-color: #f56500;
 			}
 		}
+
+// /* マップ上のボタンのスタイル */
+// .custom-button {
+//   position: absolute; /* 絶対位置 */
+//   top: 20px; /* 上からの位置 */
+//   right: 20px; /* 右からの位置 */
+//   background-color: #4285f4; /* ボタンの背景色 */
+//   color: #ffffff; /* ボタンの文字色 */
+//   padding: 10px 20px; /* ボタンのパディング */
+//   border: none; /* ボーダーなし */
+//   cursor: pointer; /* カーソルをポインターに */
+// }
+
 	}
 }
 </style>
